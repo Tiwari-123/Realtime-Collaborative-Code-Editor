@@ -1,0 +1,246 @@
+.mainWrap {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    height: 100vh;
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Particle Animation */
+.mainWrap::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 8%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 8%),
+        radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 8%),
+        radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 8%);
+    animation: particleMove 30s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes particleMove {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    50% { transform: translateY(-50%) rotate(180deg) scale(1.2); }
+    100% { transform: translateY(-100%) rotate(360deg) scale(1); }
+}
+
+.aside {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.asideInner {
+    flex: 1;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); }
+    50% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5)); }
+}
+
+.logoImage {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.logoImage:hover {
+    transform: scale(1.1);
+}
+
+.clientsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.client {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.client:hover {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.userName {
+    margin-top: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.editorWrap {
+    background: #1e1e1e;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Select Section Styling */
+label {
+    display: block;
+    margin: 10px 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+.seLang {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    background: #1e1e1e;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.seLang:focus {
+    outline: none;
+    border-color: #666;
+}
+
+.seLang option {
+    background: #1e1e1e;
+    color: #fff;
+    padding: 8px;
+}
+
+/* Button Styles */
+.btn {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
+}
+
+.copyBtn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.copyBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.leaveBtn {
+    background: rgba(255, 0, 0, 0.2);
+    color: white;
+}
+
+.leaveBtn:hover {
+    background: rgba(255, 0, 0, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+}
+
+/* CodeMirror Customization */
+.CodeMirror {
+    height: 100vh !important;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-top: 20px;
+}
+
+.CodeMirror-gutters {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.CodeMirror-linenumber {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mainWrap {
+        grid-template-columns: 1fr;
+    }
+    
+    .aside {
+        display: none;
+    }
+} 
